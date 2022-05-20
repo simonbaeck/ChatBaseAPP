@@ -1,16 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chat-base-app-auth
+  name: auth
 spec:
-  replicas: 1
   selector:
     matchLabels: 
-      app: nodejs
+      app: auth
   template:
     metadata:
       labels:
-        app: nodejs
+        app: auth
     spec:
       containers:
       - name: auth
@@ -18,3 +17,18 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
+          name: http-web-svc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth
+spec:
+  selector:
+    app: auth
+  ports:
+  - name: auth
+    protocol: TCP
+    port: 3000
+    targetPort: http-web-svc
