@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: chat
-        image: chat-base-app_chat:latest
+        image: simonbaeck/chatbase-chatapi:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
