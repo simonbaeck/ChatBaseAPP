@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: simonbaeck/chatbase-authapi:latest
+        image: simonbaeckap/chatbase-authapi:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
