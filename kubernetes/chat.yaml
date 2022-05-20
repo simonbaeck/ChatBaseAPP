@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-base-app-chat
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+      - name: chat
+        image: chat-base-app_chat:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        
